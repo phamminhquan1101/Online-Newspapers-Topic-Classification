@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+</head>
+<body>
+    <div class="bg">
+        <div class="container-fluid">
+            <div class="container-md">
+                <div class="row vh-100 align-items-center predictview">
+                    <div class="col-lg-8 col-md-5 col-sm-5 bg-info-subtle shadow rounded">
+                        <div class="">
+                            <form method="post" id="predictForm">
+                                <div class="row bg-primary-subtle bg-gradient mb-4 rounded">
+                                    <div class="col-sm-12 py-3 text-center fs-5 text-uppercase fw-bolder ">
+                                        Dự đoán chủ đề báo 
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-sm-9">
+                                        <div class="input-group abc">
+                                            <label for="chude" class="input-group-text">Các chủ đề</label>
+                                            <input id="chude" name="chude" class="form-control fw-bolder" placeholder="Kinh doanh, Khoa học, Giải trí, Pháp luật, Sức khỏe, Du lịch" disabled>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 abc">
+                                        <button type="button" class="btn btn-warning"><a href="https://vnexpress.net" target="_blank" style="width: 135; text-decoration: none;">Dữ liệu huấn luyện</a></button>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-sm-9">
+                                        <div class="input-group">
+                                            <label for="url" class="input-group-text">Link</label>
+                                            <input name="url" id="url" class="form-control" value="{{ url }}" placeholder="VnExpress URL">
+                                            <div class="error">
+                                                {% for message in get_flashed_messages() %}
+                                                <div class="flash rounded">{{ message }}</div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <input type="submit" name="button" class="btn btn-warning" style="width: 135;" value="Lấy dữ liệu">
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col-sm-12">
+                                        <div class="input-group">
+                                            <label for="content" class="input-group-text">Nội dung</label>
+                                            <textarea rows="18" cols="50" name="content" id="content" class="form-control" >{{ data }}</textarea>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <div class="row mb-4">
+                                    <div class="col-sm-12">
+                                        <div class="input-group">
+                                            <label for="predict" class="input-group-text">Chủ đề</label>
+                                            <input name="predict" id="predict" class="form-control fw-bolder" value="{{ predict }}" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row"> 
+                                    <div class="col-sm-12 text-center mb-2">
+                                        <input type="submit" name="button" id="predictButton" class="btn btn-primary border border-dark-subtle" data-bs-toggle="modal" data-bs-target="#Modal" value="Dự đoán"/>
+                                    </div>
+                                </div>
+                            </form>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+<script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
+<script>
+    var predictResult = "{{ predict }}";
+   
+            // Xử lý thay đổi nền
+    function setBackground(predictResult){
+    var body = document.querySelector('body');
+    body.classList.remove('background1', 'background2', 'background3', 'background4', 'background5', 'background6', 'background');
+    switch (predictResult) {
+            case "Kinh doanh":
+                body.classList.add('background1');
+                break;
+            case "Khoa học":
+                body.classList.add('background2');
+                break;
+            case "Giải trí":
+                body.classList.add('background3');
+                break;
+            
+            case "Pháp luật":
+                body.classList.add('background4');
+                break;
+            case "Sức khỏe":
+                body.classList.add('background5');
+                break;
+            case "Du lịch":
+                body.classList.add('background6');
+                break;
+            default:
+                body.classList.add('background');
+                break;
+        }
+    }
+    setBackground(predictResult);
+    
+</script>
+</html>

@@ -1,0 +1,53 @@
+.bg{
+    background-image: url('/static/imgs/bg.jpg') bottom center no-repeat;
+}
+body{
+    background-image: url('/static/imgs/bg.jpg');
+    background-size: 100%; 
+    background-repeat: repeat; /* Ngăn không cho hình nền lặp lại */
+}
+.flash {
+    margin: 1em 0;
+    padding: 1em;
+    background: #f6caca;
+    border: 1px solid #a83737;
+}
+#predict{
+    padding: 1em;
+    background: #cae4f6;
+    border: 1px solid #378ea8;
+}
+.background {
+    background-image: url('/static/imgs/bg.jpg');
+    background-size: 100%; 
+    background-repeat: repeat;        }
+.background1 {
+    background-image: url('/static/imgs/kd.jpg');
+    background-size: 100%; 
+    background-repeat: repeat;        }
+.background2 {
+    background-image: url('/static/imgs/kh.jpg');
+    background-size: 100%; 
+    background-repeat: repeat;        }
+.background3 {
+    background-image: url('/static/imgs/gt.jpg');
+    background-size: 100%; 
+    background-repeat: repeat;        }
+.background4 {
+    background-image: url('/static/imgs/pl.jpg');
+    background-size: 100%; 
+    background-repeat: repeat;        }
+.background5 {
+    background-image: url('/static/imgs/sk.jpg');
+    background-size: 100%; 
+    background-repeat: repeat;        }
+.background6 {
+    background-image: url('/static/imgs/dl.jpg');
+    background-size: 100%; 
+    background-repeat: repeat;        }
+.abc a:hover{
+    color: red;
+}
+.abc a{
+    color: black;
+}
